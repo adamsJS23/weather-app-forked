@@ -9,7 +9,7 @@ html, body {
 .app {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 80vh;
     align-items: center;
 }
 
@@ -38,6 +38,7 @@ html, body {
 }
 
 .button-56 {
+  font-family: 'Vidaloka', serif;
   align-items: center;
   background-color: #f4cdfb;
   border: 2px solid #111;
@@ -48,7 +49,7 @@ html, body {
   display: flex;
   font-family: Inter,sans-serif;
   font-size: 16px;
-  height: 48px;
+  height: 45px;
   justify-content: center;
   line-height: 24px;
   max-width: 100%;
@@ -94,7 +95,8 @@ html, body {
   display: flex;
   justify-content: space-around;
   margin: 2em 0;
-  width: 80vw;
+  width: 70vw;
+  height: auto;
 }
 
 #weatherContainer div {
@@ -112,6 +114,7 @@ html, body {
 }
 
 footer {
+  margin-top: 15vh;
   font-size: 0.8rem;
   color: rgb(26, 25, 25);
   display: flex;
@@ -119,19 +122,22 @@ footer {
   justify-content: center;
   background-color: #f9e4fd;
   padding: auto 0;
-  height: 10vh;
-  border-top: 2px white solid;
+  height: 5vh;
 }
 
 footer a img {
-  height: 35px;
-  width: 60px;
+  height: 20px;
+  width: 35px;
   cursor: pointer;
 }
 
 
 
 @media (min-width: 768px) {
+
+  .app {
+    height: 90vh;
+  }
   .title {
     font-size: 4rem;
 
@@ -147,5 +153,15 @@ footer a img {
 
   #weatherContainer {
     width: 40vw;
+  }
+
+  footer {
+    height: 10vh;
+    margin-top: 0;
+  }
+
+  footer a img {
+    height: 35px;
+    width: 60px;
   }
 }

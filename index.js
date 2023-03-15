@@ -1,14 +1,16 @@
 import useApiKey from './key.js';
 import getCountryName from './ico.js'
 
-document.getElementById("weatherButton").addEventListener("click", getWeather)
 const display = document.getElementById('weatherContainer')
+const input = document.getElementById("locationInput")
+
+document.getElementById("weatherButton").addEventListener("click", getWeather)
+
 
 
 function getWeather() {
-  const location = document.getElementById("locationInput").value;
   const apiKey = useApiKey()
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric&appid=${apiKey}`;
   
   try {
     fetch(apiUrl)
@@ -43,6 +45,7 @@ function getWeather() {
           </div>
         `
         display.innerHTML = weatherText
+        input.value = ''
       })
   } catch(e) {
     console.log('error', e)
