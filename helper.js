@@ -1,8 +1,8 @@
-import { API_KEY_OpenWeather, rest } from "./config.js";
+import { API_KEY_OpenWeather, API_KEY_RestCountry } from "./config.js";
 
 export default async function AJAX(url) {
   const response = await fetch(url);
-  if (!response.OK) return;
+  if (!response.ok) return;
   const data = await response.json();
-  console.log(data)
+  return data;
 }
