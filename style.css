@@ -1,0 +1,167 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
+  font-family: 'Vidaloka', serif;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    align-items: center;
+}
+
+.title {
+  margin: 1em 1em 0 1em;
+  font-size: 2.5rem;
+  letter-spacing: 3;
+}
+
+.small-title {
+  margin: 1em;
+
+}
+
+.app > input  {
+    width: 40vw; 
+    padding: 1em;
+    margin: 1em;
+    box-sizing: border-box;
+    border: 1px black solid;
+    border-radius: 8px;
+}
+
+.app > input:focus {
+  outline: none;
+}
+
+.button-56 {
+  font-family: 'Vidaloka', serif;
+  align-items: center;
+  background-color: #f4cdfb;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 45px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  margin: 1em;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+.weatherContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0;
+  width: 70vw;
+  height: auto;
+}
+
+.weatherContainer div {
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 0 1rem;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+footer {
+  margin-top: 15vh;
+  font-size: 0.8rem;
+  color: rgb(26, 25, 25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9e4fd;
+  padding: auto 0;
+  height: 5vh;
+}
+
+footer a img {
+  height: 20px;
+  width: 35px;
+  cursor: pointer;
+}
+
+
+
+@media (min-width: 768px) {
+
+  .app {
+    height: 90vh;
+  }
+  .title {
+    font-size: 4rem;
+
+  }
+  .button-56 {
+    padding: 0 40px;
+  }
+
+  img {
+    width: 8em;
+    height: 8em;
+  }
+
+  #weatherContainer {
+    width: 40vw;
+  }
+
+  footer {
+    height: 10vh;
+    margin-top: 0;
+  }
+
+  footer a img {
+    height: 35px;
+    width: 60px;
+  }
+}
