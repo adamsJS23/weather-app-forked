@@ -1,14 +1,22 @@
-import * as model from './model.js'
-import WeatherDataView from './weatherDataView.js'
+import * as model from "./model.js";
+import WeatherDataView from "./weatherDataView.js";
+import LocationQueryView from "./locationQueryView.js";
 
-const input = (document.getElementById("locationInput").value = "ravenna");
 async function controlWeather() {
-  await model.getAJAX();
-  // console.log(model)
-  console.log(model.state.weatherData)
+  // Get user query from input field
+  const query = LocationQueryView.getQuery();
+
+  await model.getAJAX(query);
+  // Render data from the model
+  WeatherDataView.render(model.state.weatherData);
+  // Clear input field
+  LocationQueryView.clearInput();
+  console.log(model.state.weatherData);
 }
- controlWeather()
-const display = document.getElementById("weatherContainer");
 
-// document.getElementById("weatherButton").addEventListener("click", getWeather)
-
+init();
+function init() {
+  // Publisher Subscriber for handling event
+  LocationQueryView.addHandlerClick(controlWeather);
+  LocationQueryView.addHandlerEnter(controlWeather);
+}
