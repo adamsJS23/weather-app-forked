@@ -3,15 +3,20 @@ import WeatherDataView from "./weatherDataView.js";
 import LocationQueryView from "./locationQueryView.js";
 
 async function controlWeather() {
-  // Get user query from input field
-  const query = LocationQueryView.getQuery();
+  try{
+    // Get user query from input field
+    const query = LocationQueryView.getQuery();
+    await model.getAJAX(query);
 
-  await model.getAJAX(query);
-  // Render data from the model
-  WeatherDataView.render(model.state.weatherData);
-  // Clear input field
-  LocationQueryView.clearInput();
-  console.log(model.state.weatherData);
+    // Render data from the model
+    WeatherDataView.render(model.state.weatherData);
+
+    // Clear input field
+    LocationQueryView.clearInput();
+    console.log(model.state.weatherData);
+  }catch(err){
+    WeatherDataView.renderError(err);
+  }
 }
 
 init();
