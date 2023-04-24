@@ -106,6 +106,12 @@ html, body {
   margin: 0 1rem;
 }
 
+.errorContainer{
+  padding: 1.2rem 2.4rem;
+  color: red;
+  border: 1px solid red !important;
+}
+
 .weather-details {
   display: flex;
   flex-direction: column;
