@@ -14,24 +14,27 @@ function formatWeatherData(data, country) {
   state.weatherData = {
     name: data.name,
     description: data.weather[0].description,
-    icon:data.weather[0].icon,
+    icon: data.weather[0].icon,
     temp: data.main.temp,
     countryName: country,
   };
 }
 
 // Await data form OpenWeather API and RestCountries API
-export async function getAJAX() {
+export async function getAJAX(query) {
+  // await data from OpenWeather
+  if (!query) return;
   const weatherData = await AJAX(
-    `${openWeatherUrl}weather?q=ravenna&units=metric&appid=${API_KEY_OpenWeather}`
+    `${openWeatherUrl}weather?q=${query}&units=metric&appid=${API_KEY_OpenWeather}`
   );
 
+  //  Await data from RestCountries
   const countryData = await AJAX(
     `${restCountryUrl}${weatherData.sys.country.toLowerCase()}`
   );
-  const country = countryData[0].name.common;
 
+  const country = countryData[0].name.common;
+  // Format received data
   formatWeatherData(weatherData, country);
 
-  return weatherData;
 }
