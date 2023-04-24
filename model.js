@@ -22,19 +22,22 @@ function formatWeatherData(data, country) {
 
 // Await data form OpenWeather API and RestCountries API
 export async function getAJAX(query) {
-  // await data from OpenWeather
-  if (!query) return;
-  const weatherData = await AJAX(
-    `${openWeatherUrl}weather?q=${query}&units=metric&appid=${API_KEY_OpenWeather}`
-  );
+  try {
+    // await data from OpenWeather
+    if (!query) throw new Error('Invalid city name, please enter a valid city name');
+    const weatherData = await AJAX(
+      `${openWeatherUrl}weather?q=${query}&units=metric&appid=${API_KEY_OpenWeather}`
+    );
 
-  //  Await data from RestCountries
-  const countryData = await AJAX(
-    `${restCountryUrl}${weatherData.sys.country.toLowerCase()}`
-  );
+    //  Await data from RestCountries
+    const countryData = await AJAX(
+      `${restCountryUrl}${weatherData.sys.country.toLowerCase()}`
+    );
 
-  const country = countryData[0].name.common;
-  // Format received data
-  formatWeatherData(weatherData, country);
-
+    const country = countryData[0].name.common;
+    // Format received data
+    formatWeatherData(weatherData, country);
+  } catch (err) {
+    throw err;
+  }
 }
