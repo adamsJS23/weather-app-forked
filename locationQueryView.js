@@ -4,19 +4,24 @@ class LocationQueryView {
   
   getQuery(){
     const query = this._input.value;
-    this._clearInput()
     return query;
   }
 
-  _clearInput() {
+  clearInput() {
     this._input.value = "";
   }
 
-  addHandlerQuery(handler) {
+  addHandlerClick(handler) {
    this._btn.addEventListener("click", function (e) {
       e.preventDefault();
       handler()
     });
+  }
+
+  addHandlerEnter(handler){
+    window.addEventListener('keypress', function (e){
+      e.keyCode==13 && handler()
+    })
   }
 }
 
