@@ -14,10 +14,10 @@ function formatWeatherData(data, country) {
   state.weatherData = {
     name: data.name,
     description: data.weather[0].description,
+    icon:data.weather[0].icon,
     temp: data.main.temp,
     countryName: country,
   };
-  console.log(state.weatherData);
 }
 
 // Await data form OpenWeather API and RestCountries API
