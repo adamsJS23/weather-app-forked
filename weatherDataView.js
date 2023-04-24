@@ -1,11 +1,14 @@
 class WeatherDataView {
   _data;
   _container = document.querySelector(".weatherContainer");
-
+  _errorMessage = "Location not found";
   render(data) {
-    this._data=data;
-    this._clearContainer()
-    this._container.insertAdjacentHTML("afterbegin", this._generateMarkup(this._data));
+    this._data = data;
+    this._clearContainer();
+    this._container.insertAdjacentHTML(
+      "afterbegin",
+      this._generateMarkup(this._data)
+    );
   }
 
   _generateMarkup(data) {
@@ -31,11 +34,15 @@ class WeatherDataView {
                   </div>`;
   }
 
-  _clearContainer(){
-    this._container.innerHTML='';
+  _clearContainer() {
+    this._container.innerHTML = "";
   }
 
-  
+  renderError(errorMessage = this._errorMessage) {
+    this._clearContainer();
+    const markup = `<div class="errorContainer">${errorMessage}</div>`;
+    this._container.insertAdjacentHTML("beforeend", markup);
+  }
 }
 
 export default new WeatherDataView();
